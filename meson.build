@@ -37,12 +37,17 @@ photonlibcamera = shared_library('photonlibcamera',
   cpp_args: ['-DEGL_NO_X11=1', '-Wall', '-Wextra', '-Wpedantic', '-Werror', '-fPIC', '-ftree-vectorize', '-std=c++20'],
   dependencies: [libcamera_dep, egl_dep, gbm_dep, opengl_dep, libdrm_dep, jni_dep],
   include_directories: ['include/', 'opencv/'],
-  link_args: ['-l' + meson.current_source_dir() + 'opencv/linux/arm64/shared/libopencv_core.so.4.10',
-              '-l' + meson.current_source_dir() + 'opencv/linux/arm64/shared/libopencv_imgcodecs.so.4.10',
-              '-l' + meson.current_source_dir() + 'opencv/linux/arm64/shared/libopencv_imgproc.so.4.10']
+  link_args: [meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_core.so.4.10',
+              meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_imgcodecs.so.4.10',
+              meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_imgproc.so.4.10']
 )
 
+photonlibcamera_dep = declare_dependency(link_with : photonlibcamera,
+  include_directories : ['include/', 'opencv/'])
 executable('libcamera_meme',
   'main.cpp',
-  link_with: [photonlibcamera]
+  dependencies: [photonlibcamera_dep, libcamera_dep, egl_dep, gbm_dep, opengl_dep, libdrm_dep, jni_dep],
+  link_args: [meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_core.so.4.10',
+              meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_imgcodecs.so.4.10',
+              meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_imgproc.so.4.10']
 )
