@@ -17,9 +17,7 @@
 
 #pragma once
 
-#include <string>
 #include <string_view>
-#include <vector>
 
 enum CameraModel {
     Disconnected = 0,
