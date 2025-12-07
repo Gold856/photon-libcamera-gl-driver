@@ -1,0 +1,3 @@
+[submodule "submodules/libcamera"]
+	path = subprojects/libcamera
+	url = https://github.com/raspberrypi/libcamera
