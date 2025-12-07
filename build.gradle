@@ -47,9 +47,13 @@ ext.outputsFolder = file("$buildDir/outputs")
 println("Building for $nativeName")
 
 tasks.register('copyNativeLibrary', Sync) {
-    from "${projectDir}/build"
+    from "${projectDir}/meson_build"
     into "${outputsFolder}/${nativeName}/shared"
-    include "**/*.so"
+    include "subprojects/**/*"
+    exclude "**/*.cpp"
+    exclude "**/*.h"
+    exclude "**/*.o"
+    include "libphotonlibcamera.so"
     includeEmptyDirs = false
 
     build.dependsOn it
