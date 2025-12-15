@@ -39,7 +39,7 @@ jobs:
           pip install meson
 
       - name: Set up build
-        run: meson setup meson_build -Dbuildtype=debugoptimized
+        run: meson setup meson_build -Dbuildtype=release
         env:
           CC: gcc-12
           CXX: g++-12

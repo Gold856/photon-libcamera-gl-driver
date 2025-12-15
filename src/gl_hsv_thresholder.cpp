@@ -152,7 +152,6 @@ void GlHsvThresholder::start(const std::vector<int> &output_buf_fds) {
     // glDebugMessageCallbackKHR(on_gl_error, nullptr);
     // GLERROR();
 
-    m_programs.reserve(static_cast<int>(ProcessType::NUM_PROCESS_TYPES));
     m_programs[0] = make_program(VERTEX_SOURCE, NONE_FRAGMENT_SOURCE);
     m_programs[1] = make_program(VERTEX_SOURCE, HSV_FRAGMENT_SOURCE);
     if (useGrayScalePassThrough) {

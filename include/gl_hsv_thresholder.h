@@ -90,7 +90,7 @@ class GlHsvThresholder {
     GLuint m_grayscale_buffer = 0;
     GLuint m_min_max_texture = 0;
     GLuint m_min_max_framebuffer = 0;
-    std::vector<GLuint> m_programs = {};
+    std::array<GLuint, 5> m_programs;
 
     HeadlessData m_status;
     EGLDisplay m_display;
