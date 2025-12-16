@@ -81,7 +81,7 @@ void test_res(int width, int height) {
                 Java_org_photonvision_raspi_LibCameraJNI_getFrameCaptureTime(
                     nullptr, NULL, reinterpret_cast<int64_t>(&pair));
 
-            std::printf("now %li then %li dt %i\n", now, then, now - then);
+            std::printf("now %li then %li dt %li\n", now, then, now - then);
 
             if (i % 30 == 0) {
                 std::printf("saving cam %i idx %i\n", j, i);
