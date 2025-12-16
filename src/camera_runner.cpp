@@ -20,18 +20,10 @@
 #include <chrono>
 #include <cstdio>
 #include <cstring>
-#include <iostream>
+#include <latch>
 #include <memory>
 #include <unordered_map>
 #include <utility>
-
-#ifdef __cpp_lib_latch
-#include <latch>
-using latch = std::latch;
-#else
-#include "latch.hpp"
-using latch = Latch;
-#endif
 
 #include <libcamera/control_ids.h>
 #include <libcamera/property_ids.h>
@@ -81,7 +73,7 @@ void CameraRunner::setCopyOptions(bool copyIn, bool copyOut) {
 bool CameraRunner::start() {
     unsigned int stride = grabber.streamConfiguration().stride;
 
-    latch start_frame_grabber{2};
+    std::latch start_frame_grabber{2};
 
     threshold = std::thread([&, stride]() {
         m_thresholder.start(fds);

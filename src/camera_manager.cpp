@@ -25,7 +25,5 @@ std::vector<std::shared_ptr<libcamera::Camera>> GetAllCameraIDs() {
         camera_manager = new libcamera::CameraManager();
         camera_manager->start();
     }
-    std::vector<std::shared_ptr<libcamera::Camera>> cams =
-        camera_manager->cameras();
-    return cams;
+    return camera_manager->cameras();
 }
