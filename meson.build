@@ -44,6 +44,7 @@ photonlibcamera = shared_library('photonlibcamera',
   cpp_args: ['-DEGL_NO_X11=1', '-fPIC', '-ftree-vectorize'],
   dependencies: [libcamera_dep, egl_dep, gbm_dep, opengl_dep, libdrm_dep, jni_dep],
   include_directories: ['include/', 'opencv/'],
+  install_rpath: '$ORIGIN',
   link_args: [meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_core.so.4.10',
               meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_imgcodecs.so.4.10',
               meson.current_source_dir() + '/opencv/linux/arm64/shared/libopencv_imgproc.so.4.10']

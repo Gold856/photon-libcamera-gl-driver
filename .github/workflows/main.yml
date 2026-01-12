@@ -45,7 +45,7 @@ jobs:
           CXX: g++-12
 
       - name: Build libcamera
-        run: meson compile
+        run: meson install --destdir ../meson_install
         working-directory: meson_build
 
       - run: find
@@ -65,7 +65,7 @@ jobs:
         with:
           name: libcamera-driver
           path: |
-            meson_build/**/*
+            meson_install/**/*
       - uses: actions/upload-artifact@v4
         with:
           name: libcamera-meme
